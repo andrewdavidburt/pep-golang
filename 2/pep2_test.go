@@ -39,7 +39,7 @@ func Test_addevens(t *testing.T) {
 	f = fib(n, l)
 	var ae int
 	ae = addevens(f)
-	if (ae != 231) {
-		t.Error("Expected 231, got:", ae)
+	if (ae != 44) {
+		t.Error("Expected 44, got:", ae)
 	}
 }
