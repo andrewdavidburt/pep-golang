@@ -4,30 +4,39 @@ import (
 	"fmt"
 )
 
-func multiple(n int) []int {
+func fib(n int, l int) []int {
 	var output []int
-	for i := 0; i < n; i++ {
-		if (i%5 == 0) || (i%3 == 0) {
-//			fmt.Println("multiples:", i)
-			output = append(output, i)
+	var addon int
+	output = append(output, 1)
+	output = append(output, 2)
+	for i := 2; i < n; i++ {
+		addon = output[i-2]+output[i-1]
+		if (addon < l) {
+			output = append(output, addon)
+		} else {
+			return output
 		}
 	}
 	return output
 }
 
-func sum_m(n int) int {
-	var m []int
-	var sum int
-	m = multiple(n)
-	for i := range m {
-//		fmt.Println("summed:", i)
-		sum += m[i]
+func addevens(fib []int) int {
+	var output int = 0
+	for i := 0; i < len(fib); i++ {
+		if (fib[i]%2 == 0) {
+			output = output + fib[i]
+		}
 	}
-	return sum
+	return output
 }
 
 func main () {
-	var n int = 1000
-	var x = sum_m(n)
-	fmt.Println("For starting value:", n, "result is: ", x)
+	var n int = 50
+	var f []int
+	var l int = 4000000
+	f = fib(n, l)
+	fmt.Println("Fibonacci sequence:", f)
+	var ae int
+	ae = addevens(f)
+	fmt.Println("Fibonacci even sum:", ae)
 }
